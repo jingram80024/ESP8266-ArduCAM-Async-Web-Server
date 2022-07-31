@@ -17,13 +17,23 @@
 #error Select OV2640_MINI_2MP_PLUS in memorysaver.h
 #endif
 
+/* Make sure to set your ssid and password in the platformio.ini file using build_flags:
+    build_flags = -D SSID='"yourssidhere"'
+    -D PASSWORD='"yourwifipasswordhere"'
+*/
+#ifndef SSID
+#define SSID "SSID not defined"
+#endif
+#ifndef PASSWORD
+#define PASSWORD "PASSWORD not defined"
+#endif
+
 const int CS = 16;
-const char *ssid = "ssid";
-const char *password = "pw";
+const char *ssid = SSID;
+const char *password = PASSWORD;
 static IPAddress ip(192, 168, 1, 203);
 static IPAddress gateway(192, 168, 1, 1);
 static IPAddress subnet(255, 255, 255, 0);
-
 
 AsyncWebServer server(80);
 ArduCAM myCAM(OV2640, CS);
