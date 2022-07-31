@@ -157,7 +157,11 @@
 
     })();
 
-    // markdown rendering
+    // ====================markdown rendering============================
+    /*-- Simon Willison's Render Markdown tool
+    was altered and used here to make the call to the Github Markdown API
+    https://til.simonwillison.net/tools/render-markdown
+    */
     
     async function markdownOnLoad(){
         const md_url = "/README.md";
@@ -203,6 +207,8 @@
         })).text();
     }
     
+    // =====================end markdown rendering===========================
+
     /* button controls (pre-websocket implementation)
     * --------------------------------------------------------- */
     let capInit = false;

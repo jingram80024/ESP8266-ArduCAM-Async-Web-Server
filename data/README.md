@@ -3,13 +3,13 @@
 Hardware
 
 [![](https://img.shields.io/badge/espressif-E7352C?style=for-the-badge&logo=espressif&logoColor=white)](https://www.espressif.com/en/products/socs/esp8266)
-[![](http://192.168.1.203/arducam_md_badge.svg)](https://www.arducam.com/docs/spi-cameras-for-arduino/introduction/)
+[![](https://raw.githubusercontent.com/jingram80024/ESP8266-ArduCAM-Async-Web-Server/main/data/arducam_md_badge.svg)](https://www.arducam.com/docs/spi-cameras-for-arduino/introduction/)
 
 Languages
 
 ![](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white) [![](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)](https://www.arduino.cc/reference/en/) ![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
 
-An Asynchronous HTTP and WebSocket Server that serves ArduCAM camera module captured images and video stream when requested from the client
+An Asynchronous HTTP and WebSocket Server that serves ArduCAM camera module captured images when requested by client. Front end template "Count - Particles" by styleshout was used as a starting point for developing the front end.
 
 ## Table of contents
 - [ESP8266 and ArduCAM Async Web Server](#esp8266-and-arducam-async-web-server)
@@ -51,3 +51,4 @@ This library is the base for [ESPAsyncWebServer](https://github.com/me-no-dev/ES
 
 [favicon.cc](https://www.favicon.cc/) was used to create the ArduCAM logo favicon.ico
 
+[Simon Willison](https://github.com/simonw)'s [Render Markdown](https://til.simonwillison.net/tools/render-markdown) implementing GitHub's [Markdown API](https://docs.github.com/en/rest/markdown) was used. The javascript handling the call to the GitHub Markdown API was altered and used in this project's main.js file.
