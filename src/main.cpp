@@ -1,4 +1,4 @@
-// ESP8266 in Station Mode serving ArduCAM feed on an asynchronous web server
+// ESP8266-12E in Station Mode serving ArduCAM feed on an asynchronous web server
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
