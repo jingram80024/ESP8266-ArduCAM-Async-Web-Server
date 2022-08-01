@@ -21,16 +21,16 @@
     build_flags = -D SSID='"yourssidhere"'
     -D PASSWORD='"yourwifipasswordhere"'
 */
-#ifndef SSID
-#define SSID "SSID not defined"
+#ifndef env_SSID
+#define env_SSID "SSID not defined"
 #endif
-#ifndef PASSWORD
-#define PASSWORD "PASSWORD not defined"
+#ifndef env_PASSWORD
+#define env_PASSWORD "PASSWORD not defined"
 #endif
 
 const int CS = 16;
-const char *ssid = SSID;
-const char *password = PASSWORD;
+const char *ssid = env_SSID;
+const char *password = env_PASSWORD;
 static IPAddress ip(192, 168, 1, 203);
 static IPAddress gateway(192, 168, 1, 1);
 static IPAddress subnet(255, 255, 255, 0);

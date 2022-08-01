@@ -1,17 +1,15 @@
 /* ===================================================================
- * Count - Main JS
- *
+ * ESP8266 ArduCAM Web Server - Main JS
+ * ssPreloader, ssInfoToggle, ssSlickSlider, and ssPlaceholder functions
+ * taken from Count - Particles template by styleshout
  * ------------------------------------------------------------------- */
 
 (function($) {
 
     "use strict";
-    
     var cfg = {
         scrollDuration : 800, // smoothscroll duration
-        mailChimpURL   : 'https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc'   // mailchimp url
     },
-
     $WIN = $(window);
 
     // Add the User Agent to the <html>
@@ -42,6 +40,7 @@
             // for hero content animations 
             $("html").removeClass('ss-preload');
             $("html").addClass('ss-loaded');
+            // request README.md from server to display on more info page
             markdownOnLoad();
         });
     };
@@ -85,65 +84,6 @@
     };
 
 
-   /* final countdown
-    * ------------------------------------------------------ */
-    var ssFinalCountdown = function() {
-
-        var finalDate =  new Date("March 25, 2021 15:37:25").getTime();
-        //-date: "Mar 25 2021",
-
-        $('.home-content__clock').countdown(finalDate)
-        .on('update.countdown finish.countdown', function(event) {
-
-            var str = '<div class=\"top\"><div class=\"time days\">' +
-                      '%D <span>day%!D</span>' + 
-                      '</div></div>' +
-                      '<div class=\"time hours\">' +
-                      '%H <span>H</span></div>' +
-                      '<div class=\"time minutes\">' +
-                      '%M <span>M</span></div>' +
-                      '<div class=\"time seconds\">' +
-                      '%S <span>S</span></div>';
-
-            $(this)
-            .html(event.strftime(str));
-
-        });
-    };
-
-
-   /* AjaxChimp
-    * ------------------------------------------------------ */
-    var ssAjaxChimp = function() {
-        
-        $('#mc-form').ajaxChimp({
-            language: 'es',
-            url: cfg.mailChimpURL
-        });
-
-        // Mailchimp translation
-        //
-        //  Defaults:
-        //	 'submit': 'Submitting...',
-        //  0: 'We have sent you a confirmation email',
-        //  1: 'Please enter a value',
-        //  2: 'An email address must contain a single @',
-        //  3: 'The domain portion of the email address is invalid (the portion after the @: )',
-        //  4: 'The username portion of the email address is invalid (the portion before the @: )',
-        //  5: 'This email address looks fake or invalid. Please enter a real email address'
-
-        $.ajaxChimp.translations.es = {
-            'submit': 'Submitting...',
-            0: '<i class="fas fa-check"></i> We have sent you a confirmation email',
-            1: '<i class="fas fa-exclamation-triangle"></i> You must enter a valid e-mail address.',
-            2: '<i class="fas fa-exclamation-triangle"></i> E-mail address is not valid.',
-            3: '<i class="fas fa-exclamation-triangle"></i> E-mail address is not valid.',
-            4: '<i class="fas fa-exclamation-triangle"></i> E-mail address is not valid.',
-            5: '<i class="fas fa-exclamation-triangle"></i> E-mail address is not valid.'
-        }
-    };
-
-
    /* initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -152,16 +92,14 @@
         ssInfoToggle();
         ssSlickSlider();
         ssPlaceholder();
-        ssFinalCountdown();
-        ssAjaxChimp();
 
     })();
 
-    // ====================markdown rendering============================
-    /*-- Simon Willison's Render Markdown tool
-    was altered and used here to make the call to the Github Markdown API
+    /* request README.md file
+    Simon Willison's Render Markdown tool was altered and used 
+    here to make the call to the Github Markdown API
     https://til.simonwillison.net/tools/render-markdown
-    */
+    * ------------------------------------------------------ */
     
     async function markdownOnLoad(){
         const md_url = "/README.md";
@@ -206,10 +144,9 @@
             body: JSON.stringify({'mode': 'markdown', 'text': markdown})
         })).text();
     }
-    
-    // =====================end markdown rendering===========================
 
-    /* button controls (pre-websocket implementation)
+
+    /* button controls (stream is does not set up ws yet...)
     * --------------------------------------------------------- */
     let capInit = false;
     const capBtn = document.getElementById("capture-btn");
