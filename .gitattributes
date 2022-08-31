@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+.vscode/** linguist-generated
+include/** linguist-vendor
+lib/** linguist-vendor
+test/** linguist-vendor
+data/jquery-3.2.1.min.js -linguist-vendor
+data/modernizr.js -linguist-vendor
+data/pace.min.js -linguist-vendor
+data/plugins.js -linguist-vendor
+data/polygons.js -linguist-vendor
+data/vendor.css -linguist-vendor
